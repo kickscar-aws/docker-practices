@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: helloworld07
+  profiles:
+    active: development
+
+
+---
+spring:
+  mvc:
+    static-path-pattern: /static/**
+
+  thymeleaf:
+    check-template-location: true
+    mode: HTML
+    prefix: classpath:templates/
+    suffix: .html
+    encoding: UTF-8
+
+server:
+  servlet:
+    context-path: /
+    encoding:
+      charset: utf-8
+      enabled: true
+  port: 80
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: development
+
+  thymeleaf:
+    cache: false
+
+  devtools:
+    add-properties: false
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
+    remote:
+      secret: mysecret
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: production
+
+  thymeleaf:
+    cache: true

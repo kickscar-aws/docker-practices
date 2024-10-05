@@ -1,0 +1,10 @@
+services:
+  helloworld06:
+    build:
+      context: .
+      args:
+        profile: ${profile:-development}
+    ports:
+      - "8080:80"
+    environment:
+      profile: ${profile:-development}

@@ -1,0 +1,39 @@
+# spring configuration
+spring:
+  application:
+    name: helloworld06
+  profiles:
+    active: development
+
+
+---
+# configuration: default(common)
+server:
+  servlet:
+    context-path: /
+    encoding:
+      charset: utf-8
+      enabled: true
+  port: 80
+
+---
+# configuration: development
+spring:
+  config:
+    activate:
+      on-profile: development
+  devtools:
+    add-properties: false
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
+    remote:
+      secret: mysecret
+
+---
+# configuration: production
+spring:
+  config:
+    activate:
+      on-profile: production

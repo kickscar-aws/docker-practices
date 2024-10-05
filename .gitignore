@@ -1,0 +1,55 @@
+## Maven/Gradle
+**/target
+**/.gradle/
+**/settings.gradle
+**/build/
+**/out
+
+## Node/JavaScript/TypeScript
+**/node_modules
+**/*.tsbuildinfo
+
+## React.js
+**/bundle.js
+**/main.js
+
+# Next.js
+**/.next/
+**/out/
+**/next-env.d.ts
+
+# Vercel
+**/.vercel
+
+## Eclipse/STS
+**/.apt_generated
+**/.classpath
+**/.mvn
+**/.factorypath
+**/.project
+**/.settings
+**/.springBeans
+**/.sts4-cache
+
+## IntelliJ
+**/.idea
+**/*.iws
+**/*.iml
+**/*.ipr
+
+## VS Code
+**/.vscode
+**/.suo
+**/.ntvs*
+**/.njsproj
+**/.sln
+**/.sw?
+
+## Redis
+**/*.rdb
+
+## Mac
+**/.DS_Store
+
+## private technotes
+**/technotes

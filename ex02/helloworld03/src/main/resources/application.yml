@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: helloworld03
+  profiles:
+    active: development
+
+
+---
+server:
+  servlet:
+    context-path: /
+    encoding:
+      charset: utf-8
+      enabled: true
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: development
+
+  devtools:
+    add-properties: false
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
+
+server:
+  port: 8080
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: production
+
+server:
+  port: 80

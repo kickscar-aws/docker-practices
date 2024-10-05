@@ -1,0 +1,117 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizelegibility;
+    letter-spacing: -0.25px;
+}
+
+input, select, textarea, button { font-family:inherit; }
+
+body {
+    font-family: 'Space Mono', monospace;
+    width: 100%;
+    background-color: rgb(17, 17, 17);
+}
+
+#root {
+    width: 100%;
+}
+
+#App {
+    width: fit-content;
+    block-size: fit-content;
+    margin: 0 auto;
+}
+
+.hello-box {
+    display: inline-flex;
+    margin-top: 60px;
+    flex-direction: row;
+    flex-flow: nowrap;
+    justify-content: center;
+    width: fit-content;
+    block-size: fit-content;
+
+    border: 1px solid rgb(17, 17, 17);
+    box-shadow: 0 12px 24px rgba(17, 17, 17, 0.06);
+    color: rgb(40, 255, 3);
+    background-color: rgb(17, 17, 17);
+}
+
+.hello-box:before, .hello-box:after {
+    display: block;
+    font-size: 64px;
+    font-weight: bold;
+}
+
+.hello-box:before {
+    content: 'Hello, {';
+    padding: 10px 10px 10px 20px;
+}
+
+.hello-box:after {
+    content: '}';
+    padding: 10px 20px 10px 10px;
+}
+
+.hello-box label {
+    display: block;
+    flex-basis: content;
+}
+
+.hello-box label.input-text {
+    flex-grow: 1;
+}
+
+.hello-box label.input-text input {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 0;
+    min-width: 1ch;
+    font-size: 58px;
+    font-weight: bold;
+    letter-spacing: 0;
+    outline: none;
+    border: none;
+    color: rgb(100, 176, 255);
+    background-color: rgb(17, 17, 17);
+}
+
+span#mse {
+    display: block;
+    width: fit-content;
+    block-size: fit-content;
+    min-width: 1ch;
+    padding: 0;
+    font-size: 58px;
+    font-weight: bold;
+    letter-spacing: 0;
+    border: none;
+    visibility: hidden;
+}
+
+.hello-box label.identity-icon {
+    flex-grow: 0;
+}
+
+.hello-box label.identity-icon:before {
+    content: ',';
+    font-size: 64px;
+    font-weight: bold;
+    padding: 0 6px;
+}
+
+.hello-box label.identity-icon .icon {
+    display: inline-block;
+    margin-top: 18px;
+    width: 64px;
+    height: 64px;
+    background-size: 64px 64px;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+}
+

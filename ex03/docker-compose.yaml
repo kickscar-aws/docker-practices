@@ -1,0 +1,55 @@
+services:
+
+  helloworld07:
+    container_name: helloworld07
+#    hostname: helloworld07
+    build:
+      context: helloworld07
+      args:
+        profile: ${profile:-development}
+    depends_on:
+      identicon:
+        condition: service_started
+    ports:
+      - "8080:80"
+    expose:
+      - "80"
+    networks:
+      - ex03
+    links:
+      - identicon
+    environment:
+      profile: ${profile:-development}
+
+  identicon:
+    container_name: identicon
+#    hostname: identicon
+    build:
+      context: identicon
+      args:
+        profile: ${profile:-development}
+    depends_on:
+      redis-cache:
+        condition: service_started
+    expose:
+      - "80"
+    networks:
+      - ex03
+    links:
+      - redis-cache
+    environment:
+      profile: ${profile:-development}
+
+  redis-cache:
+    container_name: redis-cache
+#    hostname: redis-cache
+    build:
+      context: redis-cache
+    expose:
+      - "6379"
+    networks:
+      - ex03
+
+networks:
+  ex03:
+    name: ex03

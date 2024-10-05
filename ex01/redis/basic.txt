@@ -1,0 +1,84 @@
+-- 1. install redis-cli on mac
+
+$ brew tap ringohub/redis-cli
+$ brew update && brew doctor
+$ brew install redis-cli
+
+
+-- 2. redis docker
+
+$ docker pull redis
+$ docker run -p 6379:6379 -d --name my-redis redis
+
+
+-- 3. test01
+
+$ redis-cli -h localhost [-p 6379]
+localhost:6379> ping
+PONG
+localhost:6379> set 'a' 1000
+OK
+localhost:6379> get a
+"1000"
+localhost:6379> get 'a'
+"1000"
+localhost:6379> exit
+$ _
+
+
+-- 4. test02
+
+$ docker exec -it my-redis bash
+root@58d03c503feb:/data# redis-cli -h localhost
+localhost:6379> get a
+"1000"
+localhost:6379> exit
+root@58d03c503feb:/data# exit
+$ _
+
+
+-- 5. test03
+
+$ docker stop my-redis
+$ redis-cli -h localhost -p 6379
+Could not connect to Redis at localhost:6379: Connection refused
+not connected> exit
+$ _
+
+
+-- 6. test04
+
+$ docker start my-redis
+$ redis-cli -h localhost -p 6379
+localhost:6379> get a
+"1000"
+localhost:6379> exit
+$
+
+
+-- 7. test05
+
+$ docker rm -f my-redis
+$ docker run -p 6379:6379 -d --name my-redis redis
+$ redis-cli -h localhost -p 6379
+localhost:6379> get a
+(nil)
+localhost:6379> exit
+$ _
+
+
+-- 8. test06
+
+$ docker run --rm -v ./redis-data:/data -p` 6379:6379 -d --name my-redis redis
+$ redis-cli -h localhost -p 6379
+localhost:6379> set a 10
+OK
+localhost:6379> save
+OK
+localhost:6379> exit
+$ docker run -v ./redis-data:/data -p 6379:6379 -d --name my-redis redis
+$ redis-cli -h localhost -p 6379
+localhost:6379> get a
+"10"
+localhost:6379> exit
+$ _
